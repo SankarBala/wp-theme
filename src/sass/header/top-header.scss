@@ -1,0 +1,80 @@
+.top-header {
+  padding-bottom: 9px;
+  border-bottom: 1px solid #ddd;
+  margin-top: 5px;
+
+  .date {
+    padding-top: 5px;
+    margin-bottom: 5px;
+  }
+  .search-box {
+    padding-top: 0px;
+  }
+
+  form.example {
+    margin-top: 0px;
+    button {
+      float: left;
+      width: 30%;
+      padding: 5px;
+      background: #327dbd;
+      color: #fff;
+      font-size: 17px;
+      border: 1px solid #327dbd;
+      border-left: none;
+      cursor: pointer;
+    }
+    input[type="text"] {
+      padding: 5px;
+      font-size: 17px;
+      border: 1px solid #ddd;
+      float: left;
+      width: 70%;
+      background: #fff;
+    }
+  }
+
+  .top-hdr-social {
+    ul {
+      list-style: none;
+      float: right;
+      margin-bottom: 0;
+      padding-top: 6px;
+      li {
+        display: inline-block;
+        color: #4d0202;
+        &::after {
+          content: "।";
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        a {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+  .date {
+    text-align: center;
+  }
+
+  .top-hdr-social {
+    text-align: center;
+    ul {
+      float: left !important;
+      margin-left: 90px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .top-hdr-social ul {
+    float: left !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+    margin-left: 15px !important;
+  }
+}
