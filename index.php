@@ -61,13 +61,13 @@
         </div>
 
 
-    <nav class="navbar navbar-expand-md main-nav">
-        <a class="navbar-brand d-md-none" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar1">
-        <i class="fa fa-bars"></i>
-        </button>
+        <nav class="navbar navbar-expand-md main-nav">
+            <a class="navbar-brand d-md-none" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar1">
+                <i class="fa fa-bars"></i>
+            </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar1">
-             
+
                 <?php
                     wp_nav_menu(array(
                         'theme_location' => 'Navmenu',
@@ -83,12 +83,56 @@
 
                     ));
                 ?>
-            </div>  
+            </div>
         </nav>
-    
 
-                </br>
 
+
+        <?php
+            $letest = new WP_Query(
+             array(
+                'post_type' => 'post',
+                'post_status' => 'publish',
+                'orderby' => 'date',
+                'order' => 'DESC',
+                'posts_per_page' => 10,
+             ));
+
+
+
+            if ($letest->have_posts()) :
+                ?>
+
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-2 text-white pt-1 marquee-text">শিরোনাম:</div>
+                <div class="col-10 pt-1 marquee-data">
+                    <marquee scrollamount="4px" onmouseover="this.stop()" onmouseout="this.start()">
+
+
+                        <?php wp_reset_postdata(); ?>
+                        <?php while ($letest->have_posts()) : $letest->the_post(); ?>
+                        <i class="fa fa-square text-danger" aria-hidden="true"></i>
+                        <a href="<?php the_permalink();?>"><img src="<?php the_post_thumbnail_url(); ?>"
+                                alt=""><?php the_title(); ?></a> &nbsp;
+
+                        <?php
+                        endwhile;
+                        wp_reset_postdata();
+                        ?>
+
+
+                    </marquee>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+    endif;
+    ?>
 
 
 
