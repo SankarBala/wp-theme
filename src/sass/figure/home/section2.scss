@@ -1,0 +1,58 @@
+.middle-image {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 767.98px) {
+  .middle-image {
+    width: 100%;
+    height: 150px;
+  }
+}
+.facebook_title {
+    background: #4862A3;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+
+
+.facebook_title a {
+    font-weight: 400;
+    color: #fff;
+}
+
+
+.archive_calender_sec {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.archive_title {
+    color: #fff;
+    background: #4862A3;
+    padding: 10px;
+    margin-bottom: 7px;
+}
+
+
+form.example input[type=text] {
+    padding: 5px;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    float: left;
+    width: 70%;
+    background: #fff;
+}
+
+
+form.example button {
+    float: left;
+    width: 30%;
+    padding: 5px;
+    background: #327DBD;
+    color: #fff;
+    font-size: 17px;
+    border: 1px solid #327DBD;
+    border-left: none;
+    cursor: pointer;
+}

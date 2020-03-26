@@ -43,10 +43,15 @@ register_nav_menus(array(
 function push_script() {
     
 	wp_enqueue_style( 'main_style', get_template_directory_uri().'/assets/css/app.css', [], null, 'all' );
-    wp_enqueue_script('main_script', get_template_directory_uri().'/assets/js/app.js', [], null, true);
+    wp_enqueue_script('main_script', get_template_directory_uri().'/assets/js/app.js', [], null, false);
     
 }
 add_action( 'wp_enqueue_scripts', 'push_script' );
 
 // Register widget
+
+
+$bn = array("০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "১০", "১১", "১২", "১৩", "১৪", "১৫", "১৬", "১৭", "১৮", "১৯", "২০");
+
+
 

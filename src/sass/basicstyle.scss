@@ -5,9 +5,18 @@ body {
   font-family: "SolaimanLipiNormal";
 }
 
+img {
+  background-image: url('test.jpg');
+}
+
 .marquee-text {
   background-color: #827f7f;
 }
 .marquee-data {
   background-color: #f0f0f0;
+}
+
+.img-bordered {
+  border: 1px solid #D2D5DB;
+  padding: 1px;
 }

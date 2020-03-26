@@ -1,6 +1,5 @@
 <?php get_header(); ?>
       
-<?php wp_reset_postdata();  ?>
 
         <main class="col-md-8">
         <?php
