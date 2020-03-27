@@ -55,3 +55,97 @@ $bn = array("০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"
 
 
 
+
+
+function sakalerpata_widgets_init() {
+    
+    register_sidebar( array(
+    'name'          => esc_html__( 'Banner Widget Area', 'sakalerpata' ),
+    'id'            => 'banner',
+    'description'   => esc_html__( 'This widget will be shown in banner inside header section.', 'sakalerpata' ),
+    'before_widget' => '',
+    'after_widget'  => '',
+    'before_title'  => '',
+    'after_title'   => '',
+    ) );
+	
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar 1 - 1/3 Widget Area', 'sakalerpata' ),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar 2 - 2/3 Widget Area', 'sakalerpata' ),
+		'id'            => 'sidebar-2',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar 3 - 3/3 Widget Area', 'sakalerpata' ),
+		'id'            => 'sidebar-3',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	
+        register_sidebar( array(
+		'name'          => esc_html__( 'Footer 1 - 1/3 Widget Area', 'sakalerpata' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 2 - 2/3 Widget Area', 'sakalerpata' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+    
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 3 - 3/3 Widget Area', 'sakalerpata' ),
+		'id'            => 'footer-3',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 4 - 4/4 Widget Area', 'sakalerpata' ),
+		'id'            => 'footer-4',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 5 - 5/5 Widget Area', 'sakalerpata' ),
+		'id'            => 'footer-5',
+		'description'   => esc_html__( 'Add widgets here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+
+
+}
+add_action( 'widgets_init', 'sakalerpata_widgets_init' );
+

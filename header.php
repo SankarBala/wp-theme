@@ -56,6 +56,12 @@
                   ?>
                 </div>
                 <div class="col-md-8 col-sm-8 bannar">
+                <?php
+                if (is_active_sidebar('banner')) {
+                    dynamic_sidebar('banner');
+                }
+                ?>
+
 
                 </div>
             </div>

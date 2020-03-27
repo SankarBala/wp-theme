@@ -1,0 +1,94 @@
+.footer {
+  background-color: #2d2d2d;
+  margin-top: 30px;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+.editorial_1 {
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid#fff;
+  padding-bottom: 20px;
+}
+
+.editorial_2 {
+  border-bottom: 1px solid#fff;
+  padding-bottom: 20px;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+.footer-menu ul {
+  list-style: none;
+  padding: 0;
+  padding-left: 10px;
+}
+.footer-menu ul li {
+  padding-bottom: 15px;
+  font-size: 17px;
+}
+.footer-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-logo img {
+  width: 100%;
+  padding: 10px 0;
+}
+.developer {
+  background-color: black;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+}
+.root_01 {
+  color: #fff;
+}
+.root_02 {
+  text-align: right;
+  color: #fff;
+}
+
+.scrollToTop {
+  width: 40px;
+  height: 50px;
+  padding: 10px;
+  background: #363636;
+  position: fixed;
+  right: 15px;
+  bottom: 40px;
+  border-radius: 20%;
+  cursor: pointer;
+}
+.scrollToTop i.fa {
+  font-size: 17px;
+  color: #fff;
+  font-weight: 400;
+  display: block;
+  position: absolute;
+  bottom: 15px;
+  left: 13px;
+}
+.btm-social ul {
+  list-style: none;
+  padding: 0;
+  padding-left: 5px;
+  padding-top: 15px;
+}
+.btm-social ul li {
+  border: 1px solid#999898;
+  border-radius: 5px;
+  padding: 3px 7px;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.btm-social ul li a {
+  color: #fff;
+  text-decoration: none;
+}
