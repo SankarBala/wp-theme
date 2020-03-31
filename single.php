@@ -5,6 +5,11 @@
   <div class="row">
 
           <main class="col-md-8 text-justify">
+          <?php
+                if (is_active_sidebar('page-start')) {
+                    dynamic_sidebar('page-start');
+                }
+                ?>
                   <?php
             while (have_posts()): the_post();       
             ?>
@@ -63,16 +68,15 @@
             endwhile;
         ?>
 
-
-
-							
-                
-                       
-                   
+ 
                        
                 </div>
 
-
+                <?php
+                if (is_active_sidebar('page-end')) {
+                    dynamic_sidebar('page-end');
+                }
+                ?>
                     
         </main>
         <div class="col-md-4">

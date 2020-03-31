@@ -10,7 +10,7 @@ mix.webpackConfig({
 
 
 
-mix.js('src/js/app.js', 'assets/js')
+mix.js('src/js/app.js', 'assets/js').sourceMaps()
    .sass('src/sass/app.scss', 'assets/css').options({
       processCssUrls: false
    });

@@ -168,7 +168,6 @@ array(
 'post_type' => 'post',
 'post_status' => 'publish',
 'cat' => get_query_var('cat'),
-'paged'=> get_query_var('paged'),
 'orderby' => 'date',
 'order' => 'DESC',
 'offset'=> get_query_var('paged') == null ? 6 : (get_query_var('paged')-1)*11+6,

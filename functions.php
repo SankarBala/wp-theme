@@ -209,6 +209,25 @@ function sakalerpata_widgets_init() {
 		'before_title'  => '',
 		'after_title'   => '',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Page start widget 5', 'sakalerpata' ),
+		'id'            => 'page-start',
+		'description'   => esc_html__( 'Page start widget 5', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Page end widget 5', 'sakalerpata' ),
+		'id'            => 'page-end',
+		'description'   => esc_html__( 'Page end widget 5', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+
 
 
 }

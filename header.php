@@ -20,7 +20,7 @@
                 শনিবার, ২১ মার্চ ২০২০, ০৪:৪৯ অপরাহ্ন
             </div>
             <div class="col-md-4 search-box">
-                <form class="example" method="get" action="/">
+                <form class="example" method="get" action="<?php echo get_home_url();?>">
                     <input type="text" maxlength="64" placeholder="এখানে লিখুন.." value="" name="s">
                     <button type="submit">খুজুন</button>
                 </form>
