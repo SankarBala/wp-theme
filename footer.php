@@ -65,7 +65,7 @@
         <div class="col-md-6 col-sm-6">
 
             <div class="text-center text-white">
-                <h3>সম্পাদক</h3>
+                
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-12 hidden-sm  footer-logo">
@@ -95,7 +95,8 @@
 <div class="developer text-center">
     <div class="row">
         <div class="col-md-6">&copy; All right reserved by sakalerpata.com </div>
-        <div class="col-md-6">Developed by Sankar Bala <br/><i class="fa fa-phone-square"></i> 01531827045</div>
+        <div class="col-md-6">Developed by Sankar Bala <br/>
+        <i class="fa fa-phone-square"></i> 01742725606</div>
     </div>
 
 </div>

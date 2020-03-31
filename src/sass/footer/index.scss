@@ -57,7 +57,7 @@
   width: 40px;
   height: 50px;
   padding: 10px;
-  background: #363636;
+  background: transparent;
   position: fixed;
   right: 15px;
   bottom: 40px;
@@ -65,13 +65,13 @@
   cursor: pointer;
 }
 .scrollToTop i.fa {
-  font-size: 17px;
-  color: #fff;
+  font-size: 71px;
+  color: #0d2236;
   font-weight: 400;
   display: block;
   position: absolute;
-  bottom: 15px;
-  left: 13px;
+  bottom: 5px;
+  left: -40px;
 }
 .btm-social ul {
   list-style: none;

@@ -144,8 +144,98 @@ function sakalerpata_widgets_init() {
 		'before_title'  => '',
 		'after_title'   => '',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Facebook widget', 'sakalerpata' ),
+		'id'            => 'facebook-page',
+		'description'   => esc_html__( 'Add facebook page code here.', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Breadcum widget', 'sakalerpata' ),
+		'id'            => 'breadcum-nav',
+		'description'   => esc_html__( 'Add bredcum here', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	
+	register_sidebar( array(
+		'name'          => esc_html__( 'Category widget 1', 'sakalerpata' ),
+		'id'            => 'category-1',
+		'description'   => esc_html__( 'Category widget 1', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Category widget 2', 'sakalerpata' ),
+		'id'            => 'category-2',
+		'description'   => esc_html__( 'Category widget 2', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Category widget 3', 'sakalerpata' ),
+		'id'            => 'category-3',
+		'description'   => esc_html__( 'Category widget 3', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Category widget 4', 'sakalerpata' ),
+		'id'            => 'category-4',
+		'description'   => esc_html__( 'Category widget 4', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Category widget 5', 'sakalerpata' ),
+		'id'            => 'category-5',
+		'description'   => esc_html__( 'Category widget 5', 'sakalerpata' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
 
 
 }
 add_action( 'widgets_init', 'sakalerpata_widgets_init' );
 
+// Post view counter;
+
+function get_post_view() {
+    $count = get_post_meta( get_the_ID(), 'post_views_count', true );
+    return "$count";
+}
+function set_post_view() {
+    $key = 'post_views_count';
+    $post_id = get_the_ID();
+    $count = (int) get_post_meta( $post_id, $key, true );
+    $count++;
+    update_post_meta( $post_id, $key, $count );
+}
+function posts_column_views( $columns ) {
+    $columns['post_views'] = 'Views';
+    return $columns;
+}
+function posts_custom_column_views( $column ) {
+    if ( $column === 'post_views') {
+        echo get_post_view();
+    }
+}
+
+add_filter( 'manage_posts_columns', 'posts_column_views' );
+add_action( 'manage_posts_custom_column', 'posts_custom_column_views' );

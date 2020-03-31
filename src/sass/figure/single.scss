@@ -1,0 +1,53 @@
+.sgl-cat-tittle {
+  background-color: #4962a4;
+  color: #fff;
+  font-size: 18px;
+  padding: 7px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.Name-again {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.image-again {
+  margin-bottom: 7px;
+}
+.image-again img {
+  border-top: 2px solid#2487DB;
+  width: 100%;
+  height: 200px;
+}
+.Name-again .sgl-hadding {
+  opacity: 2;
+}
+.sgl-hadding a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+}
+.sgl-hadding {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.3);
+  color: #00acee;
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  padding: 10px;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 15px;
+  font-weight: 700;
+}
