@@ -1,7 +1,13 @@
 
-.main-nav {
-  border-bottom: 2px solid #9a1515;
+
+
+ .main-nav {
+  border-bottom: 0px solid #299a99;
   background-color: #333;
+  padding: 0px;
+  display: block;
+  position: relative;
+  z-index: 9999;
 
   button {
     font-size: 22px;
@@ -9,115 +15,163 @@
     border: 1px solid blanchedalmond;
     border-radius: 10;
   }
+
   .navbar-nav li {
-    padding: 8px;
-  }
-  .navbar-nav a {
-    color: #ffffff;
-    font-size: 16px;
-  }
-  .active {
-    background-color: #9a1515;
-  }
-
-  .menu-item:hover {
-    background-color: #ba2222;
-    .sub-menu {
-      display: block;
-    }
-  }
-
-  .sub-menu {
-    background-color: #ba2222;
-    display: none;
-    position: relative;
-    margin-top: 0px;
-    list-style-type: none;
-    line-height: 35px;
     padding: 0px;
-    min-width: 150px;
-    border-right: 0px;
-    z-index: 9999;
+  }
+  .menu-item-has-children > a::after {
+    font-family: "FontAwesome";
+    content: " \f107";
+    color: white;
+    float: right;
+  }
+  .navbar-nav > .menu-item-has-children > a::after {
+    font-family: "FontAwesome";
+    content: " \f105";
+    color: white;
+    float: right;
+    margin-left: 10px;
+  }
+
+  ul {
+    list-style-type: none;
+    position: absolute;
+    float: left;
+    margin: 0;
+    padding: 0;
+    background-color: #04566e;
+  
+
     li {
-      padding: 5px 10px;
-      a {
-        text-decoration: none;
-        border: 0px;
+      position: relative;
+      float: left;
+      margin: 0;
+      padding: 2px 0px;
+      &.active {
+        background: #102f35;
+      }
+      &:hover {
+        background: #102f35;
+      }
+      &:hover > ul {
+        display: block;
       }
     }
-    li:hover {
-      background-color: #fde7e7;
+
+    a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      line-height: 32px;
+      padding: 0 15px;
+    }
+    ul {
+      display: none;
+      position: absolute;
+      top: 0px;
+      left: 100%;
+      background: #102f35;
+      padding: 0;
+      li {
+        float: none;
+        width: 200px;
+      }
       a {
-        color: black;
+        line-height: 120%;
+        padding: 10px 15px;
+      }
+      ul {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        background-color: #299a99;
       }
     }
   }
 }
+ 
 
 
 
 @media (min-width: 767.98px) {
   .main-nav {
-    height: 38px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    border-bottom: 2px solid #9a1515;
+    border-bottom: 0px solid #299a99;
+    background-color: #333;
+    padding: 0px;
     display: block;
     position: relative;
+    z-index: 9999;
 
-    .menu-item-has-children::after {
-      font-family: "FontAwesome";
-      content: "\f107";
-      color: white;
-    }
     .navbar-nav li {
-      border-right: 1px solid #242424;
-        padding: 0px;
-      padding-right: 16px;
-    }
-
-    .navbar-nav li a {
-      padding: 8px 2px;
-      padding-left: 18px;
-      font-size: 16px;
-      line-height: 36px;
-      text-decoration: none;
-      font-family: "SolaimanLipiNormal" !important;
-    }
-
-    .menu-item:hover {
-      background-color: #ba2222;
-      .sub-menu {
-        display: block;
-        margin-left: 0px;
-      }
-    }
-
-    .sub-menu {
-      background-color: #ba2222;
-      display: none;
-      position: absolute;
-      margin-top: 0px;
-      list-style-type: none;
-      line-height: 35px;
       padding: 0px;
-      min-width: 150px;
-      border-right: 1px solid #242424;
+    }
+    .menu-item-has-children > a::after {
+      font-family: "FontAwesome";
+      content: " \f105";
+      color: white;
+      float: right;
+    }
+    .navbar-nav > .menu-item-has-children > a::after {
+      font-family: "FontAwesome";
+      content: " \f107";
+      color: white;
+      float: right;
+      margin-left: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      background-color: transparent;
+      position: relative;
+      float: left;
+      margin: 0;
+      padding: 0;
+
       li {
-        padding: 5px 10px;
-        a {
-          text-decoration: none;
-          border: 0px;
+        position: relative;
+        float: left;
+        margin: 0;
+        padding: 2px 0px;
+        &.active {
+          background: #102f35;
         }
-        a:hover {
-          text-decoration: none;
+        &:hover {
+          background: #04566e;
+        }
+        &:hover > ul {
+          display: block;
         }
       }
-      li:hover {
-        background-color: #fde7e7;
+
+      a {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        font-size: 15px;
+        line-height: 32px;
+        padding: 0 15px;
+      }
+      ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #102f35;
+        padding: 0;
+        li {
+          float: none;
+          width: 200px;
+        }
         a {
-          color: black;
+          line-height: 120%;
+          padding: 10px 15px;
+        }
+        ul {
+          top: 0px;
+          left: 100%;
+          position: absolute;
+          background-color: #102f35;
         }
       }
     }

@@ -1,25 +1,52 @@
 .logo {
-  padding: 10px;
-  text-align: center;
+  padding: 10px 10px 10px 0px;
+  text-align: left;
+
   img {
     width: 100%;
     height: 100%;
     max-height: 130px;
   }
+
   .logo-name {
     font-size: 40px;
     color: rgb(16, 169, 189);
     font-family: monospace;
   }
+
   .logo-description {
     color: rgb(29, 30, 34);
     font-size: 16px;
   }
 }
 
-.bannar img {
-  width: 100%;
-  height: 100%;
-  padding: 10px;
+.bannar {
+  padding: 0px;
+  img {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .logo {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .logo {
+    padding: 10px 0px;
+    img {
+      max-height: 100px;
+    }
+  }
+  .bannar img {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    padding-bottom: 10px;
+  }
 }
 

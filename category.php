@@ -6,15 +6,6 @@
     <div class="col-md-8 col-sm-8">
         <!--Next Pages Close--->
 
-        <div class="breadcum">
-            <?php
-    if (is_active_sidebar('footer_5')) {
-        dynamic_sidebar('footer_5');
-    }
-    ?>
-
-        </div>
-
         <?php
                 if (is_active_sidebar('category-1')) {
                     dynamic_sidebar('category-1');

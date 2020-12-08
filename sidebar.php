@@ -1,6 +1,6 @@
 
 <?php
-                if (is_active_sidebar('footer-1')) {
+                if (is_active_sidebar('sidebar-1')) {
                     dynamic_sidebar('sidebar-1');
                 }
                 ?>
@@ -122,7 +122,7 @@ $bn = array("০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"
 </div>
 
 <?php
-                if (is_active_sidebar('footer-2')) {
+                if (is_active_sidebar('sidebar-2')) {
                     dynamic_sidebar('sidebar-2');
                 }
                 ?>
