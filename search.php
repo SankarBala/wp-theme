@@ -33,7 +33,7 @@
                     </a></h3>
 
                 <?php echo wp_trim_words(get_the_content(), $num_words = 30, $more="");?>
-                <h4 class="archvie_more"><a href="<?php the_permalink();?>">বিস্তারিত...</a>
+                <h4 class="archvie_more"><a href="<?php the_permalink();?>"><?php echo get_option('read_more');?></a>
                 </h4>
 
             </div>
@@ -79,13 +79,13 @@ echo paginate_links( array(
             <br />
             <br /><br /><br /><br /><br />
             <h2>
-                দু:খিত আপনি যা খুতেছেন তা পাওয়া যায়নি।
+                <?php echo get_option('not_found');?>
 
             </h2>
         </div>
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <hr />
-        <div class="sgl-cat-tittle"> আপনার এগুলো ভালো লাগতে পারে </div>
+        <div class="sgl-cat-tittle"> <?php echo get_option('may_be_like');?></div>
         <div class="row">
 
             <?php wp_reset_postdata();  ?>

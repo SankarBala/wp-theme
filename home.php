@@ -26,7 +26,7 @@
                 <?php
                 echo wp_trim_words(get_the_content(), $num_words = 38, $more = "");
                 ?>
-                <a href="<?php the_permalink(); ?>"> বিস্তারিত</a>
+                <a href="<?php the_permalink(); ?>"> <?php echo get_option('more_string'); ?></a>
             <?php
 
             endwhile;
@@ -75,15 +75,14 @@
             <div class="tab-header">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-justified" role="tablist">
-                    <li id="tab1" role="presentation" class="col-6 text-center active"><a href="#tab21"
-                                                                                          aria-controls="tab21"
-                                                                                          role="tab" data-toggle="tab"
-                                                                                          aria-expanded="true">সর্বশেষ
-                            আপডেট</a></li>
-                    <li id="tab2" role="presentation" class="col-6 text-center"><a href="#tab22" aria-controls="tab22"
-                                                                                   role="tab" data-toggle="tab"
-                                                                                   aria-expanded="false">জনপ্রিয়
-                            সংবাদ</a></li>
+                    <li id="tab1" role="presentation" class="col-6 text-center active">
+                        <a href="#tab21" aria-controls="tab21"
+                           role="tab" data-toggle="tab"
+                           aria-expanded="true"><?php echo get_option('latest_string'); ?></a></li>
+                    <li id="tab2" role="presentation" class="col-6 text-center">
+                        <a href="#tab22" aria-controls="tab22"
+                           role="tab" data-toggle="tab"
+                           aria-expanded="false"><?php echo get_option('popular_string'); ?></a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -107,11 +106,13 @@
                                 ));
                             $i = 1;
 
+                            $serial = explode(',', get_option('serial_string'));
+
                             while ($firstPost->have_posts()) : $firstPost->the_post();
                                 ?>
 
                                 <div class="small-img tab-border">
-                                    <span><?php echo $bn[$i++] ?></span>
+                                    <span><?php echo $serial[$i++] ?></span>
                                     <!------------Post Image------------>
                                     <a href="<?php the_permalink(); ?>">
                                         <img class="lazyload"
@@ -161,13 +162,13 @@
                                 ));
                             $i = 1;
 
-                            $bn = array("০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "১০", "১১", "১২", "১৩", "১৪", "১৫", "১৬", "১৭", "১৮", "১৯", "২০");
+                            $serial = explode(',', get_option('serial_string'));
 
                             while ($firstPost->have_posts()) : $firstPost->the_post();
                                 ?>
 
                                 <div class="small-img tab-border">
-                                    <span><?php echo $bn[$i++] ?></span>
+                                    <span><?php echo $serial[$i++] ?></span>
                                     <!------------Post Image------------>
                                     <a href="<?php the_permalink(); ?>">
                                         <img class="lazyload"
@@ -244,15 +245,6 @@
                 </div>
             </div>
 
-<!---->
-<!--            <div class="facebook_title"><a href="#">Facebook</a></div>-->
-<!--            <div class="fb-root">-->
-<!--                --><?php
-//                if (is_active_sidebar('facebook-page')) {
-//                    dynamic_sidebar('facebook-page');
-//                }
-//                ?>
-<!--                    </div>-->
 
             <div class="archive_calender_sec">
                 <?php
@@ -261,7 +253,6 @@
                 }
                 ?>
             </div>
-
 
 
             <div class="archive_calender_sec">
@@ -283,7 +274,7 @@
             <div class="col-md-8 col-sm-8">
 
                 <div class="catagory-title">
-                    <a href="<?php echo get_category_link(get_cat_ID('জাতীয়')); ?>"> জাতীয় </a>
+                    <a href="<?php echo get_category_link(get_option('section_1')); ?>"> <?php echo get_option('section_1') == 0 ? "Section 1 Select a category form theme settings" : get_cat_name(get_option('section_1')); ?> </a>
                 </div>
 
                 <div class="row">
@@ -299,7 +290,7 @@
                                 'orderby' => 'date',
                                 'order' => 'DESC',
                                 'posts_per_page' => 1,
-                                'category_name' => 'জাতীয়',
+                                'cat' => get_option('section_1'),
                             ));
 
                         while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -321,7 +312,7 @@
                                     <?php echo wp_trim_words(get_the_content(), $num_words = 100, $more = ""); ?>
                                     <span style="text-align:right">
                                 <a href="<?php the_permalink(); ?>">
-                                    বিস্তারিত...
+                                    <?php echo get_option('read_more'); ?>
                                 </a></span>
                                 </div>
                             </div>
@@ -336,7 +327,6 @@
 
                     <div class="col-md-6 col-sm-6">
 
-
                         <?php
 
                         $firstPost = new WP_Query(
@@ -347,7 +337,7 @@
                                 'order' => 'DESC',
                                 'offset' => 1,
                                 'posts_per_page' => 6,
-                                'category_name' => 'জাতীয়',
+                                'cat' => get_option('section_1'),
                             ));
 
                         while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -373,8 +363,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="more-news">
-                                    <a href="<?php echo get_category_link(get_cat_ID('জাতীয়')); ?>"> আরো খবর <i
-                                                class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                                    <a href="<?php echo get_category_link(get_option('section_1')); ?>"><?php echo get_option('more_news'); ?> </a>
                                 </div>
                             </div>
                         </div>
@@ -388,7 +377,7 @@
             <div class="col-md-4 col-sm-4">
 
                 <div class="catagory-title">
-                    <a href="<?php echo get_category_link(get_cat_ID('আন্তর্জাতিক')); ?>"> আন্তর্জাতিক </a>
+                    <a href="<?php echo get_category_link(get_option('section_2')); ?>"> <?php echo get_option('section_2') == 0 ? "Section 2 Select a category" : get_cat_name(get_option('section_2')); ?> </a>
                 </div>
 
 
@@ -401,7 +390,7 @@
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'posts_per_page' => 1,
-                        'category_name' => 'আন্তর্জাতিক',
+                        'cat' => get_option('section_2'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -437,7 +426,7 @@
                         'order' => 'DESC',
                         'offset' => 1,
                         'posts_per_page' => 2,
-                        'category_name' => 'আন্তর্জাতিক',
+                        'cat' => get_option('section_2'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -463,7 +452,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="more-news">
-                            <a href="<?php echo get_category_link(get_cat_ID('আন্তর্জাতিক')); ?>"> আন্তর্জাতিক </a>
+                            <a href="<?php echo get_category_link(get_option('section_2')); ?>"><?php echo get_option('more_news'); ?></a>
                         </div>
                     </div>
                 </div>
@@ -478,8 +467,9 @@
     <div class="section-six">
 
         <div class="catagory-title">
-            <a href="<?php echo get_category_link(get_cat_ID('খেলাধুলা')); ?>"> খেলাধুলা </a>
+            <a href="<?php echo get_category_link(get_option('section_3')); ?>"> <?php echo get_option('section_3') == 0 ? "Section 3 Select a category" : get_cat_name(get_option('section_3')); ?> </a>
         </div>
+
 
         <div class="row">
             <div class="col-md-3 col-sm-3">
@@ -494,7 +484,7 @@
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'posts_per_page' => 2,
-                        'category_name' => 'খেলাধুলা',
+                        'cat' => get_option('section_3'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -533,7 +523,7 @@
                         'order' => 'DESC',
                         'offset' => 2,
                         'posts_per_page' => 1,
-                        'category_name' => 'খেলাধুলা',
+                        'cat' => get_option('section_3'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -553,8 +543,7 @@
                         </div>
                         <div class="content-dtls">
                             <?php echo wp_trim_words(get_the_content(), $num_words = 50, $more = ""); ?>
-                            <span style="text-align:right">
-                        <a href="<?php the_permalink(); ?>">বিস্তারিত...</a></span>
+
                         </div>
 
                     </div>
@@ -564,12 +553,9 @@
 
                 endwhile;
                 ?>
-
-
             </div>
+
             <div class="col-md-4 col-sm-4">
-
-
                 <?php
 
                 $firstPost = new WP_Query(
@@ -580,7 +566,7 @@
                         'order' => 'DESC',
                         'offset' => 3,
                         'posts_per_page' => 5,
-                        'category_name' => 'খেলাধুলা',
+                        'cat' => get_option('section_3'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -608,9 +594,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="more-news">
-                            <a
-                                    href="https://newssitedesign.com/newsfresh/archives/category/%e0%a6%ac%e0%a6%bf%e0%a6%a8%e0%a7%8b%e0%a6%a6%e0%a6%a8">
-                                আরো খবর <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                            <a href="<?php echo get_category_link(get_option('section_3')); ?>"><?php echo get_option('more_news'); ?></a>
                         </div>
                     </div>
                 </div>
@@ -624,7 +608,7 @@
             <div class="col-md-8 col-sm-8">
 
                 <div class="catagory-title">
-                    <a href="<?php echo get_category_link(get_cat_ID('রাজনীতি')); ?>"> রাজনীতি </a>
+                    <a href="<?php echo get_category_link(get_option('section_4')); ?>"> <?php echo get_option('section_4') == 0 ? "Section 4 Select a category" : get_cat_name(get_option('section_4')); ?> </a>
                 </div>
 
                 <div class="row">
@@ -640,7 +624,7 @@
                                 'orderby' => 'date',
                                 'order' => 'DESC',
                                 'posts_per_page' => 1,
-                                'category_name' => 'রাজনীতি',
+                                'cat' => get_option('section_4'),
                             ));
 
                         while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -662,7 +646,7 @@
                                     <?php echo wp_trim_words(get_the_content(), $num_words = 100, $more = ""); ?>
                                     <span style="text-align:right">
                                 <a href="<?php the_permalink(); ?>">
-                                    বিস্তারিত...
+                                    <?php echo get_option('read_more'); ?>
                                 </a></span>
                                 </div>
                             </div>
@@ -688,7 +672,7 @@
                                 'order' => 'DESC',
                                 'offset' => 1,
                                 'posts_per_page' => 5,
-                                'category_name' => 'রাজনীতি',
+                                'cat' => get_option('section_4'),
                             ));
 
                         while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -714,8 +698,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="more-news">
-                                    <a href="<?php echo get_category_link(get_cat_ID('রাজনীতি')); ?>"> আরো খবর <i
-                                                class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                                    <a href="<?php echo get_category_link(get_option('section_4')); ?>"> <?php echo get_option('more_news') ?> </a>
                                 </div>
                             </div>
                         </div>
@@ -729,9 +712,8 @@
             <div class="col-md-4 col-sm-4">
 
                 <div class="catagory-title">
-                    <a href="<?php echo get_category_link(get_cat_ID('তথ্যপ্রযুক্তি')); ?>"> তথ্যপ্রযুক্তি </a>
+                    <a href="<?php echo get_category_link(get_option('section_5')); ?>"> <?php echo get_option('section_5') == 0 ? "Section 5 Select a category" : get_cat_name(get_option('section_5')); ?> </a>
                 </div>
-
 
                 <?php
 
@@ -742,12 +724,11 @@
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'posts_per_page' => 1,
-                        'category_name' => 'তথ্যপ্রযুক্তি',
+                        'cat' => get_option('section_5'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
                     ?>
-
 
                     <div class="middle_news">
                         <!------------Post Image------------>
@@ -778,7 +759,7 @@
                         'order' => 'DESC',
                         'offset' => 1,
                         'posts_per_page' => 2,
-                        'category_name' => 'তথ্যপ্রযুক্তি',
+                        'cat' => get_option('section_5'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -804,7 +785,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="more-news">
-                            <a href="<?php echo get_category_link(get_cat_ID('তথ্যপ্রযুক্তি')); ?>"> তথ্যপ্রযুক্তি </a>
+                            <a href="<?php echo get_category_link(get_option('section_5')); ?>"> <?php echo get_option('more_news') ?> </a>
                         </div>
                     </div>
                 </div>
@@ -818,7 +799,7 @@
     <div class="section-six">
 
         <div class="catagory-title">
-            <a href="<?php echo get_category_link(get_cat_ID('বিনোদন')); ?>"> বিনোদন </a>
+            <a href="<?php echo get_category_link(get_option('section_6')); ?>"> <?php echo get_option('section_6') == 0 ? "Section 6 Select a category" : get_cat_name(get_option('section_6')); ?> </a>
         </div>
 
         <div class="row">
@@ -834,7 +815,7 @@
                         'orderby' => 'date',
                         'order' => 'DESC',
                         'posts_per_page' => 2,
-                        'category_name' => 'বিনোদন',
+                        'cat' => get_option('section_6'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -873,7 +854,7 @@
                         'order' => 'DESC',
                         'offset' => 2,
                         'posts_per_page' => 1,
-                        'category_name' => 'বিনোদন',
+                        'cat' => get_option('section_6'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -893,8 +874,7 @@
                         </div>
                         <div class="content-dtls">
                             <?php echo wp_trim_words(get_the_content(), $num_words = 50, $more = ""); ?>
-                            <span style="text-align:right">
-                        <a href="<?php the_permalink(); ?>">বিস্তারিত...</a></span>
+                            <a href="<?php the_permalink(); ?>"><?php echo get_option('read_more'); ?></a></span>
                         </div>
 
                     </div>
@@ -920,7 +900,7 @@
                         'order' => 'DESC',
                         'offset' => 3,
                         'posts_per_page' => 5,
-                        'category_name' => 'বিনোদন',
+                        'cat' => get_option('section_6'),
                     ));
 
                 while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -948,9 +928,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="more-news">
-                            <a
-                                    href="https://newssitedesign.com/newsfresh/archives/category/%e0%a6%ac%e0%a6%bf%e0%a6%a8%e0%a7%8b%e0%a6%a6%e0%a6%a8">
-                                আরো খবর <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                            <a href="<?php echo get_category_link(get_option('section_6')); ?>"> <?php echo get_option('more_news') ?> </a>
                         </div>
                     </div>
                 </div>
@@ -964,7 +942,7 @@
         <div class="col-md-8 col-sm-8">
 
             <div class="catagory-title">
-                <a href="<?php echo get_category_link(get_cat_ID('ঢাকা')); ?>"> ঢাকা বিভাগ </a>
+                <a href="<?php echo get_category_link(get_option('section_7')); ?>"> <?php echo get_option('section_7') == 0 ? "Section 7 Select a category" : get_cat_name(get_option('section_7')); ?> </a>
             </div>
 
             <div class="row">
@@ -980,7 +958,7 @@
                             'orderby' => 'date',
                             'order' => 'DESC',
                             'posts_per_page' => 1,
-                            'category_name' => 'ঢাকা',
+                            'cat' => get_option('section_7'),
                         ));
 
                     while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1002,7 +980,7 @@
                                 <?php echo wp_trim_words(get_the_content(), $num_words = 100, $more = ""); ?>
                                 <span style="text-align:right">
                                 <a href="<?php the_permalink(); ?>">
-                                    বিস্তারিত...
+                                    <?php echo get_option('read_more'); ?>
                                 </a></span>
                             </div>
                         </div>
@@ -1028,7 +1006,7 @@
                             'order' => 'DESC',
                             'offset' => 1,
                             'posts_per_page' => 5,
-                            'category_name' => 'ঢাকা',
+                            'cat' => get_option('section_7'),
                         ));
 
                     while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1054,8 +1032,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="more-news">
-                                <a href="<?php echo get_category_link(get_cat_ID('ঢাকা')); ?>"> আরো খবর <i
-                                            class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                                <a href="<?php echo get_category_link(get_option('section_7')); ?>"> <?php echo get_option('more_news') ?> </a>
                             </div>
                         </div>
                     </div>
@@ -1067,11 +1044,9 @@
 
 
         <div class="col-md-4 col-sm-4">
-
             <div class="catagory-title">
-                <a href="<?php echo get_category_link(get_cat_ID('রাজশাহী')); ?>"> রাজশাহী বিভাগ </a>
+                <a href="<?php echo get_category_link(get_option('section_8')); ?>"> <?php echo get_option('section_8') == 0 ? "Section 8 Select a category" : get_cat_name(get_option('section_8')); ?> </a>
             </div>
-
 
             <?php
 
@@ -1082,7 +1057,7 @@
                     'orderby' => 'date',
                     'order' => 'DESC',
                     'posts_per_page' => 1,
-                    'category_name' => 'রাজশাহী',
+                    'cat' => get_option('section_8'),
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1118,7 +1093,7 @@
                     'order' => 'DESC',
                     'offset' => 1,
                     'posts_per_page' => 2,
-                    'category_name' => 'রাজশাহী',
+                    'cat' => get_option('section_8'),
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1144,8 +1119,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="more-news">
-                        <a href="<?php echo get_category_link(get_cat_ID('রাজশাহী')); ?>"> আরও খবর <i
-                                    class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                        <a href="<?php echo get_category_link(get_option('section_8')); ?>"> <?php echo get_option('more_news') ?> </a>
+
                     </div>
                 </div>
             </div>
@@ -1161,7 +1136,7 @@
 
 
             <div class="catagory-title">
-                <a href="<?php echo get_category_link(get_cat_ID('খুলনা')); ?>"> খুলনা বিভাগ </a>
+                <a href="<?php echo get_category_link(get_option('section_9')); ?>"> <?php echo get_option('section_9') == 0 ? "Section 9 Select a category" : get_cat_name(get_option('section_9')); ?> </a>
             </div>
 
             <?php
@@ -1173,7 +1148,8 @@
                     'orderby' => 'date',
                     'order' => 'DESC',
                     'posts_per_page' => 1,
-                    'category_name' => 'খুলনা',
+                    'cat' => get_option('section_9'),
+
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1207,7 +1183,8 @@
                     'order' => 'DESC',
                     'offset' => 1,
                     'posts_per_page' => 4,
-                    'category_name' => 'খুলনা',
+                    'cat' => get_option('section_9'),
+
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1228,9 +1205,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="more-news">
-                        <a
-                                href="<?php echo get_category_link(get_cat_ID('খুলনা')); ?>"> আরো খবর <i
-                                    class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                        <a href="<?php echo get_category_link(get_option('section_9')); ?>"> <?php echo get_option('more_news') ?> </a>
                     </div>
                 </div>
             </div>
@@ -1240,7 +1215,7 @@
 
 
             <div class="catagory-title">
-                <a href="<?php echo get_category_link(get_cat_ID('বরিশাল')); ?>"> বরিশাল বিভাগ </a>
+                <a href="<?php echo get_category_link(get_option('section_10')); ?>"> <?php echo get_option('section_10') == 0 ? "Section 10 Select a category" : get_cat_name(get_option('section_10')); ?> </a>
             </div>
 
             <?php
@@ -1252,7 +1227,7 @@
                     'orderby' => 'date',
                     'order' => 'DESC',
                     'posts_per_page' => 1,
-                    'category_name' => 'বরিশাল',
+                    'cat' => get_option('section_0'),
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1286,7 +1261,7 @@
                     'order' => 'DESC',
                     'offset' => 1,
                     'posts_per_page' => 4,
-                    'category_name' => 'বরিশাল',
+                    'cat' => get_option('section_10'),
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1307,9 +1282,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="more-news">
-                        <a
-                                href="<?php echo get_category_link(get_cat_ID('বরিশাল')); ?>">
-                            আরো খবর <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                        <a href="<?php echo get_category_link(get_option('section_10')); ?>"> <?php echo get_option('more_news') ?> </a>
                     </div>
                 </div>
             </div>
@@ -1319,7 +1292,7 @@
 
 
             <div class="catagory-title">
-                <a href="<?php echo get_category_link(get_cat_ID('চট্টগ্রাম')); ?>"> চট্টগ্রাম বিভাগ </a>
+                <a href="<?php echo get_category_link(get_option('section_11')); ?>"> <?php echo get_option('section_11') == 0 ? "Section 11 Select a category" : get_cat_name(get_option('section_11')); ?> </a>
             </div>
 
             <?php
@@ -1331,7 +1304,7 @@
                     'orderby' => 'date',
                     'order' => 'DESC',
                     'posts_per_page' => 1,
-                    'category_name' => 'চট্টগ্রাম',
+                    'cat' => get_option('section_11'),
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1365,7 +1338,7 @@
                     'order' => 'DESC',
                     'offset' => 1,
                     'posts_per_page' => 4,
-                    'category_name' => 'চট্টগ্রাম',
+                    'cat' => get_option('section_11'),
                 ));
 
             while ($firstPost->have_posts()) : $firstPost->the_post();
@@ -1382,13 +1355,10 @@
             endwhile;
             ?>
 
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="more-news">
-                        <a
-                                href="<?php echo get_category_link(get_cat_ID('চট্টগ্রাম')); ?>">
-                            আরো খবর <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+                        <a href="<?php echo get_category_link(get_option('section_11')); ?>"> <?php echo get_option('more_news') ?> </a>
                     </div>
                 </div>
             </div>
@@ -1397,3 +1367,6 @@
     </div>
 
 <?php get_footer(); ?>
+
+
+

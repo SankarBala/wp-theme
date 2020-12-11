@@ -17,13 +17,18 @@
     <div class="row top-header">
 
         <div class="col-lg-4 date">
-            <?php echo do_shortcode('[bangla_day]'); ?>,
-            <?php echo do_shortcode('[english_date]'); ?>
+<!--            --><?php //echo do_shortcode('[bangla_day]'); ?><!--,-->
+<!--            --><?php //echo do_shortcode('[english_date]'); ?>
+            <?php
+            if (is_active_sidebar('topbar')) {
+                dynamic_sidebar('topbar');
+            }
+            ?>
         </div>
         <div class="col-lg-5 search-box">
             <form class="example" method="get" action="<?php echo get_home_url(); ?>">
-                <input type="text" maxlength="64" placeholder="এখানে লিখুন.." value="" name="s"/>
-                <button type="submit">খুজুন</button>
+                <input type="text" maxlength="64" placeholder="<?php echo get_option('search_string'); ?>" value="" name="s"/>
+                <button type="submit"><?php echo get_option('search_string'); ?></button>
             </form>
         </div>
         <div class="col-lg-3">
@@ -111,7 +116,7 @@
         <div class="row">
 
             <div class="col pt-1 marquee-data">
-                <div class="text-dark pl-0 pr-2 pt-0 marquee-text position-absolute headlines">শিরোনাম:</div>
+                <div class="text-dark pl-0 pr-2 pt-0 marquee-text position-absolute headlines"><?php echo get_option('headline_string'); ?></div>
                 <marquee scrollamount="4px" onmouseover="this.stop()" onmouseout="this.start()">
 
                     <?php wp_reset_postdata(); ?>

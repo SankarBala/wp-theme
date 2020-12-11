@@ -115,6 +115,15 @@ function promax_widgets_init()
 //    ) );
 
     register_sidebar(array(
+        'name' => esc_html__('Topbar Widget Area', 'promax'),
+        'id' => 'topbar',
+        'description' => esc_html__('Add widgets here.', 'promax'),
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
+    ));
+    register_sidebar(array(
         'name' => esc_html__('Sidebar 1 - 1/3 Widget Area', 'promax'),
         'id' => 'sidebar-1',
         'description' => esc_html__('Add widgets here.', 'promax'),
@@ -129,8 +138,8 @@ function promax_widgets_init()
         'description' => esc_html__('Add widgets here.', 'promax'),
         'before_widget' => '',
         'after_widget' => '',
-        'before_title'  => '<p class="archive_title">',
-        'after_title'   => '</p>',
+        'before_title' => '<p class="archive_title">',
+        'after_title' => '</p>',
     ));
 
     register_sidebar(array(
@@ -278,18 +287,52 @@ function promax_widgets_init()
 
 add_action('widgets_init', 'promax_widgets_init');
 
-function activate_theme (){
+function activate_theme()
+{
+
+    // Social Link
     add_option('fb_link', 'https://facebook.com/itparlour/');
     add_option('tw_link', 'https://twitter.com/itparlour/');
     add_option('ig_link', 'https://instagram.com/itparlour/');
     add_option('yt_link', 'https://www.youtube.com/channel/UCGuyXPC_QKNCMxXYwLvvwBA/');
-}
 
+// Meta string
+    add_option('latest_string', 'Latest');
+    add_option('popular_string', 'Popular');
+    add_option('read_more', 'Read more');
+    add_option('more_news', 'More news');
+    add_option('search_string', 'Search');
+    add_option('not_found', 'Not found');
+    add_option('may_be_like', 'You may like this');
+    add_option('headline_string', 'Headlines');
+    add_option('serial_string', '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]');
+
+// Layout settings
+    for ($i = 1; $i < 16; $i++) {
+        add_option("section_$i", 0);
+    }
+}
 
 add_action("after_switch_theme", "activate_theme");
 
-// Post view counter;
+// Control theme setting form data.
 
+function theme_setting()
+{
+    foreach ($_POST as $key => $value) {
+        if ($key !== "action") {
+            if ($key !== "submit") {
+                update_option($key, $value);
+            }
+        }
+    }
+    wp_safe_redirect($_SERVER['HTTP_REFERER']);
+    exit;
+}
+
+add_action('admin_post_theme-setup', 'theme_setting');
+
+// Post view counter;
 function get_post_view()
 {
     $count = get_post_meta(get_the_ID(), 'post_views_count', true);
